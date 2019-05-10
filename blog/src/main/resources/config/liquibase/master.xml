@@ -9,7 +9,6 @@
     <include file="config/liquibase/changelog/20190510044425_added_entity_Post.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190510044426_added_entity_Tag.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20190510044424_added_entity_constraints_Blog.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190510044425_added_entity_constraints_Post.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
