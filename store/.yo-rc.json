@@ -29,7 +29,7 @@
     "skipUserManagement": true,
     "clientPackageManager": "npm",
     "cacheProvider": "hazelcast",
-    "jwtSecretKey": "YzAwZDBkY2RhMWJjYjA4YjJhYjlkNGY4NDc3NjIyZjEwNzFiY2Y1NzkwZTJmYmZkMWE3NzkxOTBhMmIyZGEzM2YxN2ZhYzBjMzIwNWNjY2ExMzlmYjMzNDA5NGVlOGNhNzAzMmZhNGE5YTM3NjEwOWM2M2ZiYTdmNjkxZjczYjk=",
+    "jwtSecretKey": "ODBjMzg4NDkzZDg4M2YzYmYxY2Y2OGJhMjA4MWIzN2UzOTJhMTk1MDdmOWIyZjAwNDZlMzhkNmU3YTVmOTVjNWNiZGE2NTE0NmY3OTU5NDM1OGJlZmRiZmNiMTU5MGIwMWNjMTE3YjE2OGY1ZDNiY2MzZTg5NzJkMDE5MjExMWE=",
     "entitySuffix": "",
     "dtoSuffix": "DTO",
     "otherModules": []

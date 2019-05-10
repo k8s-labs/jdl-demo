@@ -21,7 +21,7 @@
         }
     ],
     "relationships": [],
-    "changelogDate": "20190510044424",
+    "changelogDate": "20190510091904",
     "entityTableName": "blog",
     "dto": "no",
     "pagination": "no",
