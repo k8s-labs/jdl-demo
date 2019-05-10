@@ -92,6 +92,5 @@ deployment {
   deploymentType kubernetes
   appsFolders [gateway, blog, store]
   dockerRepositoryName "tanjie123"
-  kubernetesServiceType Ingress
-  ingressDomain "myjhiipster.com"
+  kubernetesServiceType NodePort
 }
