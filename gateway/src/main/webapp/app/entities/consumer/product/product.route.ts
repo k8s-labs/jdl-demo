@@ -39,7 +39,7 @@ export const productRoute: Routes = [
         data: {
             authorities: ['ROLE_USER'],
             defaultSort: 'id,asc',
-            pageTitle: 'gatewayApp.consumerProduct.home.title'
+            pageTitle: 'Products'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -51,7 +51,7 @@ export const productRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerProduct.home.title'
+            pageTitle: 'Products'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -63,7 +63,7 @@ export const productRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerProduct.home.title'
+            pageTitle: 'Products'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -75,7 +75,7 @@ export const productRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerProduct.home.title'
+            pageTitle: 'Products'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -90,7 +90,7 @@ export const productPopupRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerProduct.home.title'
+            pageTitle: 'Products'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

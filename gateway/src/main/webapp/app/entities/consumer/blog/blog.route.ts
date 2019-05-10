@@ -34,7 +34,7 @@ export const blogRoute: Routes = [
         component: BlogComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerBlog.home.title'
+            pageTitle: 'Blogs'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -46,7 +46,7 @@ export const blogRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerBlog.home.title'
+            pageTitle: 'Blogs'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -58,7 +58,7 @@ export const blogRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerBlog.home.title'
+            pageTitle: 'Blogs'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -70,7 +70,7 @@ export const blogRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerBlog.home.title'
+            pageTitle: 'Blogs'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -85,7 +85,7 @@ export const blogPopupRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerBlog.home.title'
+            pageTitle: 'Blogs'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

@@ -3,10 +3,8 @@ package com.tanjie.gateway.web.rest;
 import com.tanjie.gateway.GatewayApp;
 import com.tanjie.gateway.config.Constants;
 import com.tanjie.gateway.domain.Authority;
-import com.tanjie.gateway.domain.PersistentToken;
 import com.tanjie.gateway.domain.User;
 import com.tanjie.gateway.repository.AuthorityRepository;
-import com.tanjie.gateway.repository.PersistentTokenRepository;
 import com.tanjie.gateway.repository.UserRepository;
 import com.tanjie.gateway.security.AuthoritiesConstants;
 import com.tanjie.gateway.service.MailService;
@@ -35,11 +33,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
@@ -65,9 +61,6 @@ public class AccountResourceIntTest {
     private UserService userService;
 
     @Autowired
-    private PersistentTokenRepository persistentTokenRepository;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -91,10 +84,10 @@ public class AccountResourceIntTest {
         MockitoAnnotations.initMocks(this);
         doNothing().when(mockMailService).sendActivationEmail(any());
         AccountResource accountResource =
-            new AccountResource(userRepository, userService, mockMailService, persistentTokenRepository);
+            new AccountResource(userRepository, userService, mockMailService);
 
         AccountResource accountUserMockResource =
-            new AccountResource(userRepository, mockUserService, mockMailService, persistentTokenRepository);
+            new AccountResource(userRepository, mockUserService, mockMailService);
         this.restMvc = MockMvcBuilders.standaloneSetup(accountResource)
             .setMessageConverters(httpMessageConverters)
             .setControllerAdvice(exceptionTranslator)
@@ -718,60 +711,6 @@ public class AccountResourceIntTest {
 
         User updatedUser = userRepository.findOneByLogin("change-password-empty").orElse(null);
         assertThat(updatedUser.getPassword()).isEqualTo(user.getPassword());
-    }
-
-    @Test
-    @Transactional
-    @WithMockUser("current-sessions")
-    public void testGetCurrentSessions() throws Exception {
-        User user = new User();
-        user.setPassword(RandomStringUtils.random(60));
-        user.setLogin("current-sessions");
-        user.setEmail("current-sessions@example.com");
-        userRepository.saveAndFlush(user);
-
-        PersistentToken token = new PersistentToken();
-        token.setSeries("current-sessions");
-        token.setUser(user);
-        token.setTokenValue("current-session-data");
-        token.setTokenDate(LocalDate.of(2017, 3, 23));
-        token.setIpAddress("127.0.0.1");
-        token.setUserAgent("Test agent");
-        persistentTokenRepository.saveAndFlush(token);
-
-        restMvc.perform(get("/api/account/sessions"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.[*].series").value(hasItem(token.getSeries())))
-            .andExpect(jsonPath("$.[*].ipAddress").value(hasItem(token.getIpAddress())))
-            .andExpect(jsonPath("$.[*].userAgent").value(hasItem(token.getUserAgent())))
-            .andExpect(jsonPath("$.[*].tokenDate").value(hasItem(token.getTokenDate().toString())));
-    }
-
-    @Test
-    @Transactional
-    @WithMockUser("invalidate-session")
-    public void testInvalidateSession() throws Exception {
-        User user = new User();
-        user.setPassword(RandomStringUtils.random(60));
-        user.setLogin("invalidate-session");
-        user.setEmail("invalidate-session@example.com");
-        userRepository.saveAndFlush(user);
-
-        PersistentToken token = new PersistentToken();
-        token.setSeries("invalidate-session");
-        token.setUser(user);
-        token.setTokenValue("invalidate-data");
-        token.setTokenDate(LocalDate.of(2017, 3, 23));
-        token.setIpAddress("127.0.0.1");
-        token.setUserAgent("Test agent");
-        persistentTokenRepository.saveAndFlush(token);
-
-        assertThat(persistentTokenRepository.findByUser(user)).hasSize(1);
-
-        restMvc.perform(delete("/api/account/sessions/invalidate-session"))
-            .andExpect(status().isOk());
-
-        assertThat(persistentTokenRepository.findByUser(user)).isEmpty();
     }
 
     @Test

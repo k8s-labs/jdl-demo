@@ -34,7 +34,7 @@ export const tagRoute: Routes = [
         component: TagComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerTag.home.title'
+            pageTitle: 'Tags'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -46,7 +46,7 @@ export const tagRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerTag.home.title'
+            pageTitle: 'Tags'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -58,7 +58,7 @@ export const tagRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerTag.home.title'
+            pageTitle: 'Tags'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -70,7 +70,7 @@ export const tagRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerTag.home.title'
+            pageTitle: 'Tags'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -85,7 +85,7 @@ export const tagPopupRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerTag.home.title'
+            pageTitle: 'Tags'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

@@ -34,7 +34,7 @@ export const postRoute: Routes = [
         component: PostComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerPost.home.title'
+            pageTitle: 'Posts'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -46,7 +46,7 @@ export const postRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerPost.home.title'
+            pageTitle: 'Posts'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -58,7 +58,7 @@ export const postRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerPost.home.title'
+            pageTitle: 'Posts'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -70,7 +70,7 @@ export const postRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerPost.home.title'
+            pageTitle: 'Posts'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -85,7 +85,7 @@ export const postPopupRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.consumerPost.home.title'
+            pageTitle: 'Posts'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
