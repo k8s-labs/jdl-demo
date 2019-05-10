@@ -77,3 +77,19 @@ paginate Product with pagination
 
 microservice Product with store
 microservice Blog, Post, Tag with blog
+
+
+
+// will be created under 'docker-compose' folder
+deployment {
+  deploymentType docker-compose
+  appsFolders [gateway, blog, store]
+  dockerRepositoryName "tanjie123"
+}
+
+// will be created under 'kubernetes' folder
+deployment {
+  deploymentType kubernetes
+  appsFolders [gateway, blog, store]
+  dockerRepositoryName "tanjie123"
+}
