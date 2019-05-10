@@ -6,7 +6,6 @@ application {
     authenticationType jwt,
     devDatabaseType h2Disk,
     prodDatabaseType mysql,
-    cacheProvider ehcache,
     enableHibernateCache true,
     enableTranslation false,
     serviceDiscoveryType eureka,
@@ -21,6 +20,7 @@ application {
     packageName com.tanjie.blog,
     applicationType microservice,
     authenticationType jwt,
+    devDatabaseType h2Disk,
     prodDatabaseType mysql,
     serverPort 8081,
     serviceDiscoveryType eureka
@@ -34,6 +34,7 @@ application {
     packageName com.tanjie.store,
     applicationType microservice,
     authenticationType jwt,
+    devDatabaseType h2Disk,
     prodDatabaseType mysql,
     serverPort 8082,
     serviceDiscoveryType eureka
