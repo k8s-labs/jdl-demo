@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "com.tanjie.store",
+    "packageFolder": "com/tanjie/store",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "serviceDiscoveryType": "eureka",
+    "skipClient": true,
+    "testFrameworks": [],
+    "websocket": false,
+    "baseName": "store",
+    "applicationType": "microservice",
+    "authenticationType": "jwt",
+    "serverPort": "8082",
+    "jhipsterVersion": "5.8.2",
+    "buildTool": "maven",
+    "skipUserManagement": true,
+    "clientPackageManager": "npm",
+    "cacheProvider": "hazelcast",
+    "jwtSecretKey": "YzAwZDBkY2RhMWJjYjA4YjJhYjlkNGY4NDc3NjIyZjEwNzFiY2Y1NzkwZTJmYmZkMWE3NzkxOTBhMmIyZGEzM2YxN2ZhYzBjMzIwNWNjY2ExMzlmYjMzNDA5NGVlOGNhNzAzMmZhNGE5YTM3NjEwOWM2M2ZiYTdmNjkxZjczYjk=",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": []
+  },
+  "entities": [
+    "Product"
+  ]
+}
