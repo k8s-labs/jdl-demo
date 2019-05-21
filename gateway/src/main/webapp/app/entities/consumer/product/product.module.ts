@@ -3,27 +3,27 @@ import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from 'app/shared';
 import {
-    ProductComponent,
-    ProductDetailComponent,
-    ProductUpdateComponent,
-    ProductDeletePopupComponent,
-    ProductDeleteDialogComponent,
-    productRoute,
-    productPopupRoute
+  ProductComponent,
+  ProductDetailComponent,
+  ProductUpdateComponent,
+  ProductDeletePopupComponent,
+  ProductDeleteDialogComponent,
+  productRoute,
+  productPopupRoute
 } from './';
 
 const ENTITY_STATES = [...productRoute, ...productPopupRoute];
 
 @NgModule({
-    imports: [GatewaySharedModule, RouterModule.forChild(ENTITY_STATES)],
-    declarations: [
-        ProductComponent,
-        ProductDetailComponent,
-        ProductUpdateComponent,
-        ProductDeleteDialogComponent,
-        ProductDeletePopupComponent
-    ],
-    entryComponents: [ProductComponent, ProductUpdateComponent, ProductDeleteDialogComponent, ProductDeletePopupComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  imports: [GatewaySharedModule, RouterModule.forChild(ENTITY_STATES)],
+  declarations: [
+    ProductComponent,
+    ProductDetailComponent,
+    ProductUpdateComponent,
+    ProductDeleteDialogComponent,
+    ProductDeletePopupComponent
+  ],
+  entryComponents: [ProductComponent, ProductUpdateComponent, ProductDeleteDialogComponent, ProductDeletePopupComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class StoreProductModule {}

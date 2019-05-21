@@ -11,28 +11,28 @@ type EntityArrayResponseType = HttpResponse<IProduct[]>;
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-    public resourceUrl = SERVER_API_URL + 'store/api/products';
+  public resourceUrl = SERVER_API_URL + 'services/store/api/products';
 
-    constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient) {}
 
-    create(product: IProduct): Observable<EntityResponseType> {
-        return this.http.post<IProduct>(this.resourceUrl, product, { observe: 'response' });
-    }
+  create(product: IProduct): Observable<EntityResponseType> {
+    return this.http.post<IProduct>(this.resourceUrl, product, { observe: 'response' });
+  }
 
-    update(product: IProduct): Observable<EntityResponseType> {
-        return this.http.put<IProduct>(this.resourceUrl, product, { observe: 'response' });
-    }
+  update(product: IProduct): Observable<EntityResponseType> {
+    return this.http.put<IProduct>(this.resourceUrl, product, { observe: 'response' });
+  }
 
-    find(id: number): Observable<EntityResponseType> {
-        return this.http.get<IProduct>(`${this.resourceUrl}/${id}`, { observe: 'response' });
-    }
+  find(id: number): Observable<EntityResponseType> {
+    return this.http.get<IProduct>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
 
-    query(req?: any): Observable<EntityArrayResponseType> {
-        const options = createRequestOption(req);
-        return this.http.get<IProduct[]>(this.resourceUrl, { params: options, observe: 'response' });
-    }
+  query(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<IProduct[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
 
-    delete(id: number): Observable<HttpResponse<any>> {
-        return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
-    }
+  delete(id: number): Observable<HttpResponse<any>> {
+    return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
 }

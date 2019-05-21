@@ -22,7 +22,7 @@ import java.util.Objects;
 public class Tag implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -90,19 +90,15 @@ public class Tag implements Serializable {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (!(o instanceof Tag)) {
             return false;
         }
-        Tag tag = (Tag) o;
-        if (tag.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), tag.getId());
+        return id != null && id.equals(((Tag) o).id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return 31;
     }
 
     @Override

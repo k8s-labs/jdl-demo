@@ -19,7 +19,7 @@ import java.util.Objects;
 public class Blog implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -75,19 +75,15 @@ public class Blog implements Serializable {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (!(o instanceof Blog)) {
             return false;
         }
-        Blog blog = (Blog) o;
-        if (blog.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), blog.getId());
+        return id != null && id.equals(((Blog) o).id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return 31;
     }
 
     @Override

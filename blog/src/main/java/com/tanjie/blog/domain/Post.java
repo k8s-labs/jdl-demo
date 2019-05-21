@@ -23,7 +23,7 @@ import java.util.Objects;
 public class Post implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -144,19 +144,15 @@ public class Post implements Serializable {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (!(o instanceof Post)) {
             return false;
         }
-        Post post = (Post) o;
-        if (post.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), post.getId());
+        return id != null && id.equals(((Post) o).id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return 31;
     }
 
     @Override

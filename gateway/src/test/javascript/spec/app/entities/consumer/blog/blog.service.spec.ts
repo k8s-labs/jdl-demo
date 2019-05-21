@@ -8,99 +8,106 @@ import { BlogService } from 'app/entities/consumer/blog/blog.service';
 import { IBlog, Blog } from 'app/shared/model/consumer/blog.model';
 
 describe('Service Tests', () => {
-    describe('Blog Service', () => {
-        let injector: TestBed;
-        let service: BlogService;
-        let httpMock: HttpTestingController;
-        let elemDefault: IBlog;
-        beforeEach(() => {
-            TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule]
-            });
-            injector = getTestBed();
-            service = injector.get(BlogService);
-            httpMock = injector.get(HttpTestingController);
+  describe('Blog Service', () => {
+    let injector: TestBed;
+    let service: BlogService;
+    let httpMock: HttpTestingController;
+    let elemDefault: IBlog;
+    let expectedResult;
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [HttpClientTestingModule]
+      });
+      expectedResult = {};
+      injector = getTestBed();
+      service = injector.get(BlogService);
+      httpMock = injector.get(HttpTestingController);
 
-            elemDefault = new Blog(0, 'AAAAAAA', 'AAAAAAA');
-        });
-
-        describe('Service methods', async () => {
-            it('should find an element', async () => {
-                const returnedFromService = Object.assign({}, elemDefault);
-                service
-                    .find(123)
-                    .pipe(take(1))
-                    .subscribe(resp => expect(resp).toMatchObject({ body: elemDefault }));
-
-                const req = httpMock.expectOne({ method: 'GET' });
-                req.flush(JSON.stringify(returnedFromService));
-            });
-
-            it('should create a Blog', async () => {
-                const returnedFromService = Object.assign(
-                    {
-                        id: 0
-                    },
-                    elemDefault
-                );
-                const expected = Object.assign({}, returnedFromService);
-                service
-                    .create(new Blog(null))
-                    .pipe(take(1))
-                    .subscribe(resp => expect(resp).toMatchObject({ body: expected }));
-                const req = httpMock.expectOne({ method: 'POST' });
-                req.flush(JSON.stringify(returnedFromService));
-            });
-
-            it('should update a Blog', async () => {
-                const returnedFromService = Object.assign(
-                    {
-                        name: 'BBBBBB',
-                        handle: 'BBBBBB'
-                    },
-                    elemDefault
-                );
-
-                const expected = Object.assign({}, returnedFromService);
-                service
-                    .update(expected)
-                    .pipe(take(1))
-                    .subscribe(resp => expect(resp).toMatchObject({ body: expected }));
-                const req = httpMock.expectOne({ method: 'PUT' });
-                req.flush(JSON.stringify(returnedFromService));
-            });
-
-            it('should return a list of Blog', async () => {
-                const returnedFromService = Object.assign(
-                    {
-                        name: 'BBBBBB',
-                        handle: 'BBBBBB'
-                    },
-                    elemDefault
-                );
-                const expected = Object.assign({}, returnedFromService);
-                service
-                    .query(expected)
-                    .pipe(
-                        take(1),
-                        map(resp => resp.body)
-                    )
-                    .subscribe(body => expect(body).toContainEqual(expected));
-                const req = httpMock.expectOne({ method: 'GET' });
-                req.flush(JSON.stringify([returnedFromService]));
-                httpMock.verify();
-            });
-
-            it('should delete a Blog', async () => {
-                const rxPromise = service.delete(123).subscribe(resp => expect(resp.ok));
-
-                const req = httpMock.expectOne({ method: 'DELETE' });
-                req.flush({ status: 200 });
-            });
-        });
-
-        afterEach(() => {
-            httpMock.verify();
-        });
+      elemDefault = new Blog(0, 'AAAAAAA', 'AAAAAAA');
     });
+
+    describe('Service methods', () => {
+      it('should find an element', async () => {
+        const returnedFromService = Object.assign({}, elemDefault);
+        service
+          .find(123)
+          .pipe(take(1))
+          .subscribe(resp => (expectedResult = resp));
+
+        const req = httpMock.expectOne({ method: 'GET' });
+        req.flush(returnedFromService);
+        expect(expectedResult).toMatchObject({ body: elemDefault });
+      });
+
+      it('should create a Blog', async () => {
+        const returnedFromService = Object.assign(
+          {
+            id: 0
+          },
+          elemDefault
+        );
+        const expected = Object.assign({}, returnedFromService);
+        service
+          .create(new Blog(null))
+          .pipe(take(1))
+          .subscribe(resp => (expectedResult = resp));
+        const req = httpMock.expectOne({ method: 'POST' });
+        req.flush(returnedFromService);
+        expect(expectedResult).toMatchObject({ body: expected });
+      });
+
+      it('should update a Blog', async () => {
+        const returnedFromService = Object.assign(
+          {
+            name: 'BBBBBB',
+            handle: 'BBBBBB'
+          },
+          elemDefault
+        );
+
+        const expected = Object.assign({}, returnedFromService);
+        service
+          .update(expected)
+          .pipe(take(1))
+          .subscribe(resp => (expectedResult = resp));
+        const req = httpMock.expectOne({ method: 'PUT' });
+        req.flush(returnedFromService);
+        expect(expectedResult).toMatchObject({ body: expected });
+      });
+
+      it('should return a list of Blog', async () => {
+        const returnedFromService = Object.assign(
+          {
+            name: 'BBBBBB',
+            handle: 'BBBBBB'
+          },
+          elemDefault
+        );
+        const expected = Object.assign({}, returnedFromService);
+        service
+          .query(expected)
+          .pipe(
+            take(1),
+            map(resp => resp.body)
+          )
+          .subscribe(body => (expectedResult = body));
+        const req = httpMock.expectOne({ method: 'GET' });
+        req.flush([returnedFromService]);
+        httpMock.verify();
+        expect(expectedResult).toContainEqual(expected);
+      });
+
+      it('should delete a Blog', async () => {
+        const rxPromise = service.delete(123).subscribe(resp => (expectedResult = resp.ok));
+
+        const req = httpMock.expectOne({ method: 'DELETE' });
+        req.flush({ status: 200 });
+        expect(expectedResult);
+      });
+    });
+
+    afterEach(() => {
+      httpMock.verify();
+    });
+  });
 });

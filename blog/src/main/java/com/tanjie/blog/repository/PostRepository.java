@@ -13,7 +13,6 @@ import java.util.Optional;
 /**
  * Spring Data  repository for the Post entity.
  */
-@SuppressWarnings("unused")
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
 
@@ -21,7 +20,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
         countQuery = "select count(distinct post) from Post post")
     Page<Post> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query(value = "select distinct post from Post post left join fetch post.tags")
+    @Query("select distinct post from Post post left join fetch post.tags")
     List<Post> findAllWithEagerRelationships();
 
     @Query("select post from Post post left join fetch post.tags where post.id =:id")

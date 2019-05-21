@@ -1,11 +1,14 @@
 package com.tanjie.blog.web.rest;
+
 import com.tanjie.blog.domain.Blog;
 import com.tanjie.blog.repository.BlogRepository;
 import com.tanjie.blog.web.rest.errors.BadRequestAlertException;
-import com.tanjie.blog.web.rest.util.HeaderUtil;
+
+import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * REST controller for managing Blog.
+ * REST controller for managing {@link com.tanjie.blog.domain.Blog}.
  */
 @RestController
 @RequestMapping("/api")
@@ -27,6 +30,9 @@ public class BlogResource {
 
     private static final String ENTITY_NAME = "consumerBlog";
 
+    @Value("${jhipster.clientApp.name}")
+    private String applicationName;
+
     private final BlogRepository blogRepository;
 
     public BlogResource(BlogRepository blogRepository) {
@@ -34,11 +40,11 @@ public class BlogResource {
     }
 
     /**
-     * POST  /blogs : Create a new blog.
+     * {@code POST  /blogs} : Create a new blog.
      *
-     * @param blog the blog to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new blog, or with status 400 (Bad Request) if the blog has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
+     * @param blog the blog to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new blog, or with status {@code 400 (Bad Request)} if the blog has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/blogs")
     public ResponseEntity<Blog> createBlog(@Valid @RequestBody Blog blog) throws URISyntaxException {
@@ -48,18 +54,18 @@ public class BlogResource {
         }
         Blog result = blogRepository.save(blog);
         return ResponseEntity.created(new URI("/api/blogs/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
     /**
-     * PUT  /blogs : Updates an existing blog.
+     * {@code PUT  /blogs} : Updates an existing blog.
      *
-     * @param blog the blog to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated blog,
-     * or with status 400 (Bad Request) if the blog is not valid,
-     * or with status 500 (Internal Server Error) if the blog couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
+     * @param blog the blog to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated blog,
+     * or with status {@code 400 (Bad Request)} if the blog is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the blog couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/blogs")
     public ResponseEntity<Blog> updateBlog(@Valid @RequestBody Blog blog) throws URISyntaxException {
@@ -69,14 +75,14 @@ public class BlogResource {
         }
         Blog result = blogRepository.save(blog);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, blog.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, blog.getId().toString()))
             .body(result);
     }
 
     /**
-     * GET  /blogs : get all the blogs.
+     * {@code GET  /blogs} : get all the blogs.
      *
-     * @return the ResponseEntity with status 200 (OK) and the list of blogs in body
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of blogs in body.
      */
     @GetMapping("/blogs")
     public List<Blog> getAllBlogs() {
@@ -85,10 +91,10 @@ public class BlogResource {
     }
 
     /**
-     * GET  /blogs/:id : get the "id" blog.
+     * {@code GET  /blogs/:id} : get the "id" blog.
      *
-     * @param id the id of the blog to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the blog, or with status 404 (Not Found)
+     * @param id the id of the blog to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the blog, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/blogs/{id}")
     public ResponseEntity<Blog> getBlog(@PathVariable Long id) {
@@ -98,15 +104,15 @@ public class BlogResource {
     }
 
     /**
-     * DELETE  /blogs/:id : delete the "id" blog.
+     * {@code DELETE  /blogs/:id} : delete the "id" blog.
      *
-     * @param id the id of the blog to delete
-     * @return the ResponseEntity with status 200 (OK)
+     * @param id the id of the blog to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/blogs/{id}")
     public ResponseEntity<Void> deleteBlog(@PathVariable Long id) {
         log.debug("REST request to delete Blog : {}", id);
         blogRepository.deleteById(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 }
