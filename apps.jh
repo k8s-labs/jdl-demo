@@ -3,7 +3,7 @@ application {
     baseName gateway,
     packageName com.tanjie.gateway,
     applicationType gateway,
-    authenticationType uaa,
+    authenticationType jwt,
     devDatabaseType h2Disk,
     prodDatabaseType mysql,
     enableHibernateCache true,
@@ -19,7 +19,7 @@ application {
     baseName blog,
     packageName com.tanjie.blog,
     applicationType microservice,
-    authenticationType uaa,
+    authenticationType jwt,
     devDatabaseType h2Disk,
     prodDatabaseType mysql,
     serverPort 8081,
@@ -33,7 +33,7 @@ application {
     baseName store,
     packageName com.tanjie.store,
     applicationType microservice,
-    authenticationType uaa,
+    authenticationType jwt,
     devDatabaseType h2Disk,
     prodDatabaseType mysql,
     serverPort 8082,
@@ -43,16 +43,16 @@ application {
 }
 
 
-application {
-  config {
-    baseName uaa,
-    packageName com.tanjie.uaa,
-    applicationType uaa,
-    authenticationType uaa,
-    devDatabaseType h2Disk,
-    prodDatabaseType mysql
-  }
-}
+//application {
+//  config {
+//    baseName jwt,
+//    packageName com.tanjie.jwt,
+//    applicationType jwt,
+//    authenticationType jwt,
+//    devDatabaseType h2Disk,
+//    prodDatabaseType mysql
+//  }
+//}
 
 
 entity Blog {

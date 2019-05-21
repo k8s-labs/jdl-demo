@@ -22,13 +22,17 @@
     "websocket": false,
     "baseName": "store",
     "applicationType": "microservice",
-    "authenticationType": "uaa",
+    "authenticationType": "jwt",
     "serverPort": "8082",
     "jhipsterVersion": "6.0.1",
     "buildTool": "maven",
     "skipUserManagement": true,
     "clientPackageManager": "npm",
-    "cacheProvider": "hazelcast"
+    "cacheProvider": "hazelcast",
+    "jwtSecretKey": "MDMwOWEyZDdhMzgxOTQxYzNhOTE4NmFjNDE4Y2Y2NTExY2UwMjdiZTBlODY4NDA2ZmE1NDc5YTYwN2ZiOWE0NDg1ZjZhN2NmOGU0NzUxNzMxZmRjMDJjOGIyYTZhMDE1ZGY2MDBiYmViMTM4YjlhY2FjYmUwZTQ3OWQ1NjY5ZDk=",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": []
   },
   "entities": [
     "Product"

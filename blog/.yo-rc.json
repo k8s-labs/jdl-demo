@@ -22,13 +22,17 @@
     "websocket": false,
     "baseName": "blog",
     "applicationType": "microservice",
-    "authenticationType": "uaa",
+    "authenticationType": "jwt",
     "serverPort": "8081",
     "jhipsterVersion": "6.0.1",
     "buildTool": "maven",
     "skipUserManagement": true,
     "clientPackageManager": "npm",
-    "cacheProvider": "hazelcast"
+    "cacheProvider": "hazelcast",
+    "jwtSecretKey": "NzQ0MWY2MDgxY2EwMTMwYzU1NDFjYzQxMTUxODUyOWQxZjJjNzdkMzI2Yjk5OGE1NGI4NDViMjgyYmFlNzY2ODljNGRkNDFhZDkyNTljMzAyNjRiN2JjNTYyOTBhMjlmMGFjMGFjYzhmMTQxOTQzZDMwNzhlNmQ3ZGZmMGMyZDY=",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": []
   },
   "entities": [
     "Blog",

@@ -23,7 +23,7 @@
     "websocket": false,
     "baseName": "gateway",
     "applicationType": "gateway",
-    "authenticationType": "uaa",
+    "authenticationType": "jwt",
     "serverPort": "8080",
     "jhipsterVersion": "6.0.1",
     "buildTool": "maven",
@@ -31,7 +31,12 @@
     "clientPackageManager": "npm",
     "cacheProvider": "ehcache",
     "clientFramework": "angularX",
-    "useSass": true
+    "useSass": true,
+    "jwtSecretKey": "NWFmN2Y2YjAxODFjNDI4OGZlZDIyNWViYmU0NzYyOTFlZmJmZmIwYzU3N2E5ZDg4NDg4YjNiODNjZmI4ZDNhZDE0MzMzZjVlMTM4NDQxZmEyOWVkZGY0YjViMjVjYTA0NjA2NzAwM2Y0NGRlMThjOWU0M2UyYWZkZDQxZDU0Njg=",
+    "clientTheme": "none",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": []
   },
   "entities": [
     "Blog",
