@@ -13,6 +13,7 @@
     "consoleOptions": [],
     "serviceDiscoveryType": "eureka",
     "dockerRepositoryName": "tanjie123",
-    "dockerPushCommand": "docker push"
+    "dockerPushCommand": "docker push",
+    "jwtSecretKey": "YTRhNzNiZjgyNmYzZGVlMzI1ZmQxYzFmMGNjZDU0MmI0ODY0MjNjMWE3MzA0MmZiNWE1NWRlMGNmMzhhYTkwMzI2MTI3MmJjYzY4ZGZmMmY1N2M4ODZkMDVkZTI0ZDEyMWI4ZA=="
   }
 }
