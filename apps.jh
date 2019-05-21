@@ -1,3 +1,17 @@
+
+application {
+  config {
+    baseName uaa,
+    packageName com.tanjie.uaa,
+    applicationType uaa,
+    authenticationType uaa,
+    devDatabaseType h2Disk,
+    prodDatabaseType mysql,
+    serviceDiscoveryType eureka
+  }
+}
+
+
 application {
   config {
     baseName gateway,
@@ -42,17 +56,6 @@ application {
   entities Product
 }
 
-
-//application {
-//  config {
-//    baseName jwt,
-//    packageName com.tanjie.jwt,
-//    applicationType jwt,
-//    authenticationType jwt,
-//    devDatabaseType h2Disk,
-//    prodDatabaseType mysql
-//  }
-//}
 
 
 entity Blog {
